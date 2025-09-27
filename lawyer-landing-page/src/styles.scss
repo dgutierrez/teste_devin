@@ -1,0 +1,216 @@
+/* Global styles for Lawyer Landing Page */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@500;600;700&display=swap');
+
+/* CSS Custom Properties - Color Palette */
+:root {
+  /* Primary Colors - Blue Professional */
+  --primary-blue-strong: #1e40af;
+  --primary-blue-medium: #3b82f6;
+  --primary-blue-light: #dbeafe;
+  
+  /* Secondary Colors - Green Confidence */
+  --secondary-green-dark: #059669;
+  --secondary-green-medium: #10b981;
+  --secondary-green-light: #d1fae5;
+  
+  /* Header Premium Gradient */
+  --header-gradient-start: #1e3a8a;
+  --header-gradient-end: #1e40af;
+  
+  /* Footer Elegant */
+  --footer-bg: #0f172a;
+  --footer-text: #cbd5e1;
+  --footer-links: #60a5fa;
+  --footer-dividers: #334155;
+  
+  /* Section Backgrounds */
+  --section-light-gray: #f8fafc;
+  --section-green-light: #f0fdf4;
+  
+  /* Typography Colors */
+  --text-primary: #1e40af;
+  --text-secondary: #374151;
+  --text-body: #6b7280;
+  --text-light: #9ca3af;
+  
+  /* Support Elements */
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --info-color: #3b82f6;
+  
+  /* Card Elements */
+  --card-border: #e5e7eb;
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --card-shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  
+  /* White */
+  --white: #ffffff;
+  --golden-yellow: #fbbf24;
+}
+
+/* Global Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--text-body);
+  background-color: var(--white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 3.5rem;
+  color: var(--text-primary);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1.875rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--text-body);
+  font-size: 1.125rem;
+  line-height: 1.7;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--secondary-green-dark), var(--secondary-green-medium));
+  color: var(--white);
+  box-shadow: var(--card-shadow);
+}
+
+.btn-primary:hover {
+  filter: brightness(0.9);
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-blue-medium);
+  border: 2px solid var(--primary-blue-medium);
+}
+
+.btn-secondary:hover {
+  background: var(--primary-blue-medium);
+  color: var(--white);
+}
+
+/* Card Styles */
+.card {
+  background: var(--white);
+  border-radius: 0.75rem;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-shadow);
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--card-shadow-hover);
+  border-color: var(--primary-blue-medium);
+  transform: translateY(-2px);
+}
+
+/* Container and Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  h3 {
+    font-size: 1.5rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}
