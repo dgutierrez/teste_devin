@@ -1,6 +1,7 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject, signal, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 import { Observable, BehaviorSubject, tap, catchError, of } from 'rxjs';
 import { 
   LoginRequest, 
@@ -19,6 +20,7 @@ import {
 export class AuthService {
   private readonly http = inject(HttpClient);
   private readonly router = inject(Router);
+  private readonly platformId = inject(PLATFORM_ID);
   
   private readonly API_BASE_URL = 'https://api.lawrana.com';
   private readonly TOKEN_KEY = 'lawrana_token';
@@ -35,10 +37,12 @@ export class AuthService {
   }
 
   private initializeAuth(): void {
-    const token = this.getToken();
-    if (token) {
-      this.isAuthenticated.set(true);
-      this.loadUserProfile();
+    if (isPlatformBrowser(this.platformId)) {
+      const token = this.getToken();
+      if (token) {
+        this.isAuthenticated.set(true);
+        this.loadUserProfile();
+      }
     }
   }
 
@@ -135,15 +139,22 @@ export class AuthService {
   }
 
   private setToken(token: string): void {
-    localStorage.setItem(this.TOKEN_KEY, token);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem(this.TOKEN_KEY, token);
+    }
   }
 
   private getToken(): string | null {
-    return localStorage.getItem(this.TOKEN_KEY);
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem(this.TOKEN_KEY);
+    }
+    return null;
   }
 
   private removeToken(): void {
-    localStorage.removeItem(this.TOKEN_KEY);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem(this.TOKEN_KEY);
+    }
   }
 
   private setCurrentUser(user: User | null): void {
